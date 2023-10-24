@@ -10,22 +10,6 @@ export default function Home() {
     // perform database operations
 
     // get the auth token
-
-    cookies().set("auth-token", "some-auth-token-value", {
-      maxAge: 48 * 60 * 60,
-      secure: process.env.NODE_ENV === "production",
-      httpOnly: true,
-    });
-  };
-
-  const fetchUserInfo = async () => {
-    const authToken = cookies().get("auth-token")?.value;
-  };
-
-  const logout = async () => {
-    // remove stored token
-
-    cookies().delete("auth-token");
   };
 
   return (
@@ -53,21 +37,6 @@ export default function Home() {
             Login
           </button>
         </form>
-      </div>
-
-      <div className="mt-5">
-        <h2 className="mt-10 text-center text-3xl font-semibold">
-          {" "}
-          Cookie Value
-        </h2>
-
-        {cookies().get("auth-token")?.name && (
-          <p className="mt-5 text-xl">
-            {cookies().get("auth-token")?.name +
-              ": " +
-              cookies()?.get("auth-token")?.value}
-          </p>
-        )}
       </div>
     </main>
   );
